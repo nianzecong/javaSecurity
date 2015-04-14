@@ -6,7 +6,6 @@ import java.security.KeyPairGenerator;
 import java.security.PrivateKey;
 import java.security.PublicKey;
 import java.security.spec.X509EncodedKeySpec;
-import java.util.Objects;
 
 import javax.crypto.Cipher;
 import javax.crypto.KeyAgreement;
@@ -56,7 +55,7 @@ public class ImoocDH {
 			senderKeyAgreement.init(senderKeyPair.getPrivate());
 			senderKeyAgreement.doPhase(senderPublicKey, true);
 			SecretKey senderDesKey = senderKeyAgreement.generateSecret("DES");
-			if (Objects.equals(receiverDesKey, senderDesKey)) {
+			if (receiverDesKey.equals(senderDesKey)) {
 				System.out.println("双方密钥相同");
 			}
 			
